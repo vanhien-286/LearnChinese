@@ -1,0 +1,226 @@
+
+/* =========================
+   Vocabulary Page
+========================= */
+
+.vocabulary-page {
+    min-height: 100vh;
+    padding: 60px 8%;
+    background: linear-gradient(135deg, #f8fafc 0%, #fff 50%, #fff7f7 100%);
+    box-sizing: border-box;
+}
+
+/* =========================
+   Page Header
+========================= */
+
+.vocabulary-page h1 {
+    margin: 0 0 40px;
+    text-align: center;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #1f2937;
+    position: relative;
+}
+
+.vocabulary-page h1::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 4px;
+    margin: 14px auto 0;
+    border-radius: 10px;
+    background: #dc2626;
+}
+
+/* =========================
+   Vocabulary List
+========================= */
+
+.vocabulary-list {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* =========================
+   Vocabulary Card
+========================= */
+
+.vocabulary-item {
+    position: relative;
+    padding: 28px 30px;
+    background: rgba(255, 255, 255, 0.95);
+
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+
+    overflow: hidden;
+}
+
+/* thanh màu bên trái */
+
+.vocabulary-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #dc2626;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s ease;
+}
+
+/* hover */
+
+.vocabulary-item:hover {
+    transform: translateY(-5px);
+    border-color: #fecaca;
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.1);
+}
+
+.vocabulary-item:hover::before {
+    transform: scaleY(1);
+}
+
+/* =========================
+   Simplified Chinese
+========================= */
+
+.vocabulary-item h2 {
+    margin: 0 0 8px;
+
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 700;
+
+    color: #111827;
+}
+
+/* =========================
+   Traditional Chinese
+========================= */
+
+.vocabulary-traditional {
+    margin: 0 0 16px;
+
+    font-size: 18px;
+    color: #9ca3af;
+}
+
+/* =========================
+   Pinyin
+========================= */
+
+.vocabulary-pinyin {
+    display: inline-block;
+
+    margin: 0 0 16px;
+    padding: 7px 13px;
+
+    background: #fff1f2;
+    color: #dc2626;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* =========================
+   Definition
+========================= */
+
+.vocabulary-definition {
+    margin: 0;
+    padding-top: 15px;
+
+    border-top: 1px solid #f1f5f9;
+
+    color: #4b5563;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* =========================
+   Loading
+========================= */
+
+.vocabulary-page > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 60vh;
+
+    color: #6b7280;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+    .vocabulary-page {
+        padding: 40px 20px;
+    }
+
+    .vocabulary-page h1 {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+
+    .vocabulary-list {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .vocabulary-item {
+        padding: 24px;
+    }
+
+    .vocabulary-item h2 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vocabulary-page {
+        padding: 30px 15px;
+    }
+
+    .vocabulary-page h1 {
+        font-size: 30px;
+    }
+
+    .vocabulary-item {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .vocabulary-item h2 {
+        font-size: 28px;
+    }
+
+    .vocabulary-definition {
+        font-size: 15px;
+    }
+}
+

@@ -1,0 +1,12 @@
+:root {
+  --text: #6b6375; }
+#root {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: #f5f7f4;
+    color: #202c29;
+    -webkit-font-smoothing: antialiased;
+    --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+}

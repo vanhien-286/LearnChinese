@@ -1,0 +1,530 @@
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.auth-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f4f8fc;
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   MAIN LOGIN CONTAINER
+========================= */
+
+.auth-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(59, 130, 246, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(37, 99, 235, 0.06),
+      transparent 30%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   LEFT SIDE
+========================= */
+
+.auth-visual {
+  position: relative;
+
+  width: 48%;
+  max-width: 600px;
+  min-height: 540px;
+
+  padding: 42px 48px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  color: #102a43;
+
+  border-radius: 14px 0 0 14px;
+
+  /*
+    Nếu bạn có ảnh background riêng,
+    thay background bên dưới bằng:
+
+    background-image: url("/images/login-bg.jpg");
+    background-size: cover;
+    background-position: center;
+  */
+
+  background:
+    linear-gradient(
+      135deg,
+      #e9f4ff 0%,
+      #d9edff 45%,
+      #c8e4fb 100%
+    );
+
+  z-index: 1;
+}
+
+
+/* Hiệu ứng mây / ánh sáng */
+
+.auth-visual::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  top: -170px;
+  left: -130px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.45);
+
+  filter: blur(5px);
+}
+
+
+/* Vòng tròn trang trí */
+
+.auth-visual::after {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  right: -100px;
+  bottom: -100px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================
+   BRAND
+========================= */
+
+.auth-brand {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  font-size: 23px;
+  font-weight: 750;
+
+  color: #142b4a;
+
+  letter-spacing: -0.4px;
+}
+
+.auth-brand small {
+  margin-top: 5px;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  color: #58718d;
+}
+
+
+/* =========================
+   CHINESE QUOTE
+========================= */
+
+.auth-visual-copy {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 65px;
+
+  padding-left: 35px;
+}
+
+.auth-visual-copy::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 7px;
+
+  width: 4px;
+  height: 45px;
+
+  border-radius: 10px;
+
+  background: #2878d7;
+}
+
+.auth-visual-copy strong {
+  font-size: 25px;
+  font-weight: 700;
+
+  color: #245d99;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 8px;
+}
+
+.auth-visual-copy span {
+  font-size: 13px;
+
+  color: #59728c;
+}
+
+
+/* =========================
+   RIGHT LOGIN FORM
+========================= */
+
+.login-form {
+  position: relative;
+  z-index: 2;
+
+  width: 52%;
+  max-width: 600px;
+  min-height: 540px;
+
+  box-sizing: border-box;
+
+  padding: 48px 55px;
+
+  background: #ffffff;
+
+  border-radius: 0 14px 14px 0;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  box-shadow:
+    0 12px 35px rgba(36, 86, 130, 0.12);
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-btn {
+  position: absolute;
+
+  top: 25px;
+  left: 30px;
+
+  border: none;
+  background: transparent;
+
+  color: #6d8195;
+
+  font-size: 13px;
+
+  cursor: pointer;
+
+  padding: 5px 0;
+
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  color: #1769d1;
+
+  transform: translateX(-3px);
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.auth-kicker {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #3576c5;
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.login-form h2 {
+  margin: 0;
+
+  color: #172b4d;
+
+  font-size: 29px;
+  font-weight: 700;
+
+  letter-spacing: -0.6px;
+}
+
+.auth-description {
+  margin: 7px 0 24px;
+
+  color: #8091a5;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.login-form input {
+  width: 100%;
+  height: 43px;
+
+  box-sizing: border-box;
+
+  padding: 0 14px;
+
+  margin-bottom: 12px;
+
+  border: 1px solid #dce5ef;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #26384d;
+
+  font-size: 12px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.login-form input::placeholder {
+  color: #9aa9b8;
+}
+
+.login-form input:hover {
+  border-color: #c5d5e5;
+}
+
+.login-form input:focus {
+  border-color: #2878d7;
+
+  background: #fbfdff;
+
+  box-shadow:
+    0 0 0 3px rgba(40, 120, 215, 0.09);
+}
+
+
+/* =========================
+   SHOW PASSWORD
+========================= */
+
+.show-password-btn {
+  align-self: flex-end;
+
+  margin-top: -4px;
+  margin-bottom: 15px;
+
+  padding: 2px 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #2878d7;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.show-password-btn:hover {
+  color: #1559a5;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.submit-btn {
+  width: 100%;
+  height: 43px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #1769e0;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 12px rgba(23, 105, 224, 0.22);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #125bc4;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 7px 16px rgba(23, 105, 224, 0.27);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================
+   REGISTER
+========================= */
+
+.register-btn {
+  margin-top: 20px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #8291a2;
+
+  font-size: 11px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.register-btn:hover {
+  color: #1769e0;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .auth-page {
+    padding: 20px;
+  }
+
+  .auth-visual {
+    width: 45%;
+    padding: 35px;
+  }
+
+  .login-form {
+    width: 55%;
+    padding: 40px;
+  }
+
+  .auth-visual-copy strong {
+    font-size: 21px;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .auth-page {
+    padding: 15px;
+  }
+
+  .auth-visual {
+    display: none;
+  }
+
+  .login-form {
+    width: 100%;
+    max-width: 450px;
+
+    min-height: auto;
+
+    padding: 70px 35px 40px;
+
+    border-radius: 14px;
+  }
+}
+
+
+@media (max-width: 450px) {
+  .auth-page {
+    padding: 10px;
+  }
+
+  .login-form {
+    padding: 65px 25px 35px;
+  }
+
+  .login-form h2 {
+    font-size: 26px;
+  }
+
+  .auth-description {
+    margin-bottom: 20px;
+  }
+}

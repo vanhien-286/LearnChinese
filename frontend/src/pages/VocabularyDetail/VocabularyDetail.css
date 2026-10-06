@@ -1,0 +1,112 @@
+
+.vocabulary-detail-page {
+    min-height: 100vh;
+    padding: 40px;
+    background: #f5f7fb;
+}
+
+.back-button {
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.vocabulary-detail-card {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.word-section {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.word-section h1 {
+    font-size: 80px;
+    margin: 0;
+}
+
+.detail-traditional {
+    font-size: 18px;
+    color: #777;
+}
+
+.detail-pinyin {
+    font-size: 28px;
+    margin: 15px 0;
+    color: #2563eb;
+}
+
+.detail-part-of-speech {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #eee;
+    font-size: 14px;
+}
+
+.meaning-section {
+    margin-top: 30px;
+}
+
+.meaning-section h2,
+.example-section h2,
+.audio-section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.meaning-section p {
+    font-size: 20px;
+}
+
+.example-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.example-sentence {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.example-pinyin {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.example-meaning {
+    font-size: 18px;
+}
+
+.audio-section {
+    margin-top: 30px;
+}
+
+.audio-section audio {
+    width: 100%;
+    max-width: 400px;
+}
+
+@media (max-width: 600px) {
+    .vocabulary-detail-page {
+        padding: 20px;
+    }
+
+    .vocabulary-detail-card {
+        padding: 24px;
+    }
+
+    .word-section h1 {
+        font-size: 56px;
+    }
+}
