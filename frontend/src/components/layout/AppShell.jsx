@@ -1,7 +1,8 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "../../App.css";
+
 import { getUserProfile } from "../../services/UserService";
+import "./AppShell.css";
 
 const AppShell = () => {
   const [user, setUser] = useState(null);
@@ -45,9 +46,9 @@ const AppShell = () => {
 
         {/* LOGO */}
         <div className="brand">
-          <div className="brand-title">
+          <NavLink to="/dashboard" className="brand-title">
             汉语学习
-          </div>
+          </NavLink>
 
           <small>
             Học tiếng Trung từng bước

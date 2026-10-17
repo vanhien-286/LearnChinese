@@ -23,7 +23,6 @@ public class AppDbContext : DbContext
     public DbSet<UserExamResult> UserExamResults { get; set; }
     public DbSet<Hanzi> Hanzis { get; set; }
     public DbSet<VocabularyHanzi> VocabularyHanzis { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -128,5 +127,7 @@ public class AppDbContext : DbContext
                 p.Pinyin
             })
             .IsUnique();
+
+
     }
 }

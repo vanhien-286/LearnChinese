@@ -29,7 +29,7 @@ const Lessons = () => {
   }
 
    return (
-        <div className="page-content">
+        <div className="lessons-page">
 
             <Link className="card-link" to="/hsk">
                 ← HSK Levels

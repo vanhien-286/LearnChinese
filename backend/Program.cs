@@ -4,6 +4,7 @@ using backend.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.FileProviders;
 using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,6 +75,18 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors("AllowReactApp");
+var audioDirectory = Path.Combine(
+    app.Environment.ContentRootPath,
+    "Data",
+    "Seeds",
+    "HSK-3.0-main",
+    "New HSK (2025)",
+    "Audio");
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(audioDirectory),
+    RequestPath = "/audio"
+});
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -103,19 +116,14 @@ using (var scope = app.Services.CreateScope())
     var context = scope.ServiceProvider
         .GetRequiredService<AppDbContext>();
 
-    // Seed dữ liệu cũ
-    // Chỉ giữ lại nếu bạn vẫn cần seed các dữ liệu nền.
-    // DbSeeder.Seed(context);
-
-    // Import từ vựng
     var jsonPath = Path.Combine(
         app.Environment.ContentRootPath,
         "Data",
         "Seeds",
-        "hsk_vocabulary_import.json"
+        "hsk1_vocabulary_vi.json"
     );
 
-    VocabularyImporter.Import(context, jsonPath);
+    VocabularyImporter.ReplaceHsk1(context, jsonPath);
 }
 
 app.Run();

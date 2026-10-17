@@ -30,7 +30,7 @@ const Dashboard = () => {
     return <div>Đang tải...</div>;
   }
 return ( 
-  <div className="page-content">
+  <div className="dashboard-page">
     <div className="dashboard-heading">
       <div><span className="eyebrow">Dashboard</span><h1 className="page-heading">
         Xin chào, { user?.username || "Người dùng"}!

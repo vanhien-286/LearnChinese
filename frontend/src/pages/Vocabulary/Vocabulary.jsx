@@ -33,7 +33,7 @@ const Vocabulary = () => {
                     <h2>{vocabulary.wordSimplified}</h2>
                     <p className="vocabulary-traditional">{vocabulary.wordTraditional}</p>
                     <p className="vocabulary-pinyin">{vocabulary.pinyin}</p>
-                    <p className="vocabulary-definition">{vocabulary.definition}</p>
+                    <p className="vocabulary-definition">{vocabulary.meaning}</p>
                 </div>
             ))}
             </div>

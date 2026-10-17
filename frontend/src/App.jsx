@@ -15,6 +15,8 @@ import Listening from "./pages/Listening/Listening";
 import Progress from "./pages/Progress/Progress";
 import Settings from "./pages/Settings/Settings";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import VocabularyLearning from "./pages/VocabularyLearning/VocabularyLearning";
+import FlashcardReview from "./pages/Flashcard/FlashcardReview";
 function App() {
   return (
     <BrowserRouter>
@@ -37,6 +39,11 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/vocabulary" element={<Vocabulary />} />
           <Route path="/vocabulary/:id" element={<VocabularyDetail />} />
+          <Route
+              path="/hsk/:levelId/lessons/:lessonId/vocabulary"
+              element={<VocabularyLearning />}
+          />
+          <Route path="/flashcards/review" element={<FlashcardReview />} />
         </Route>  
         </Route>
       </Routes>

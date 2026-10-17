@@ -1,4 +1,3 @@
-
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getVocabularyById } from "../../services/VocabularyService";
@@ -19,6 +18,7 @@ const VocabularyDetail = () => {
                 setError("");
 
                 const data = await getVocabularyById(id);
+
                 setVocabulary(data);
             } catch (err) {
                 setError(err.message);
@@ -31,111 +31,133 @@ const VocabularyDetail = () => {
     }, [id]);
 
     if (loading) {
-        return <div className="vocabulary-detail-page">
-            Đang tải chi tiết từ vựng...
-        </div>;
+        return (
+            <div className="page-content">
+                <p>Đang tải từ vựng...</p>
+            </div>
+        );
     }
 
     if (error) {
         return (
-            <div className="vocabulary-detail-page">
+            <div className="page-content">
                 <p>Lỗi: {error}</p>
-                <button
-                    className="back-button"
-                    onClick={() => navigate(-1)}
-                >
-                    ← Quay lại
-                </button>
             </div>
         );
     }
 
     if (!vocabulary) {
         return (
-            <div className="vocabulary-detail-page">
+            <div className="page-content">
                 <p>Không tìm thấy từ vựng.</p>
-                <button
-                    className="back-button"
-                    onClick={() => navigate(-1)}
-                >
-                    ← Quay lại
-                </button>
             </div>
         );
     }
 
     return (
-        <div className="vocabulary-detail-page">
+        <div className="page-content">
+
+            {/* Quay lại */}
             <button
+                className="vocabulary-back-button"
                 onClick={() => navigate(-1)}
-                className="back-button"
             >
                 ← Quay lại
             </button>
 
+
+            {/* Thông tin chính */}
             <div className="vocabulary-detail-card">
-                <div className="word-section">
-                    <h1>{vocabulary.wordSimplified}</h1>
+
+                <div className="vocabulary-detail-main">
+
+                    <span className="vocabulary-detail-label">
+                        Từ vựng
+                    </span>
+
+                    <h1>
+                        {vocabulary.wordSimplified}
+                    </h1>
 
                     {vocabulary.wordTraditional && (
-                        <p className="detail-traditional">
-                            Phồn thể: {vocabulary.wordTraditional}
+                        <p className="vocabulary-detail-traditional">
+                            {vocabulary.wordTraditional}
                         </p>
                     )}
 
-                    <p className="detail-pinyin">
+                    <p className="vocabulary-detail-pinyin">
                         {vocabulary.pinyin}
                     </p>
 
-                    {vocabulary.partOfSpeech && (
-                        <span className="detail-part-of-speech">
-                            {vocabulary.partOfSpeech}
-                        </span>
-                    )}
+                    <span className="vocabulary-detail-pos">
+                        {vocabulary.partOfSpeech || "Chưa cập nhật"}
+                    </span>
+
                 </div>
 
-                <div className="meaning-section">
+
+                {/* Nghĩa */}
+                <div className="vocabulary-detail-section">
+
                     <h2>Nghĩa</h2>
+
                     <p>
-                        {vocabulary.meaning || "Chưa cập nhật nghĩa"}
+                        {vocabulary.meaning || "Chưa cập nhật"}
                     </p>
+
                 </div>
 
-                <div className="example-section">
-                    <h2>Ví dụ</h2>
 
-                    {vocabulary.exampleSentence ? (
-                        <>
-                            <p className="example-sentence">
-                                {vocabulary.exampleSentence}
+                {/* Ví dụ */}
+                {vocabulary.exampleSentence && (
+                    <div className="vocabulary-detail-section">
+
+                        <h2>Ví dụ</h2>
+
+                        <p className="example-sentence">
+                            {vocabulary.exampleSentence}
+                        </p>
+
+                        {vocabulary.examplePinyin && (
+                            <p className="example-pinyin">
+                                {vocabulary.examplePinyin}
                             </p>
+                        )}
 
-                            {vocabulary.examplePinyin && (
-                                <p className="example-pinyin">
-                                    {vocabulary.examplePinyin}
-                                </p>
-                            )}
+                        {vocabulary.exampleMeaning && (
+                            <p className="example-meaning">
+                                {vocabulary.exampleMeaning}
+                            </p>
+                        )}
 
-                            {vocabulary.exampleMeaning && (
-                                <p className="example-meaning">
-                                    {vocabulary.exampleMeaning}
-                                </p>
-                            )}
-                        </>
-                    ) : (
-                        <p>Chưa có ví dụ cho từ vựng này.</p>
-                    )}
-                </div>
-
-                {vocabulary.audioUrl && (
-                    <div className="audio-section">
-                        <h2>Phát âm</h2>
-                        <audio controls src={vocabulary.audioUrl}>
-                            Trình duyệt không hỗ trợ phát âm thanh.
-                        </audio>
                     </div>
                 )}
+
+
+               
+                {vocabulary.audioUrl && (
+                    <div className="vocabulary-detail-section">
+
+                        <h2>Phát âm</h2>
+                        {vocabulary.audioUrl ? (
+                             <audio
+                            controls
+                            src={vocabulary.audioUrl}
+                        >
+                            Trình duyệt của bạn không hỗ trợ audio.
+                        </audio> ): (
+                            <p className="audio_empty">
+                                Chưa có audio cho từ này.
+                            </p>
+                        )}
+
+                       
+
+                    </div>
+                )}
+
             </div>
+
         </div>
     );
 };

@@ -1,4 +1,5 @@
 using backend.Data;
+using backend.DTOs;
 using backend.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,9 +12,28 @@ namespace backend.Controllers
     public class VocabularyController : ControllerBase
     {
         private readonly AppDbContext _context;
+
         public VocabularyController(AppDbContext context)
         {
             _context = context;
+        }
+
+        private static VocabularyResponseDto ToResponseDto(Vocabulary vocabulary)
+        {
+            return new VocabularyResponseDto
+            {
+                Id = vocabulary.Id,
+                WordSimplified = vocabulary.WordSimplified,
+                WordTraditional = vocabulary.WordTraditional,
+                Pinyin = vocabulary.Pinyin,
+                PartOfSpeech = vocabulary.PartOfSpeech,
+                Meaning = vocabulary.Meaning,
+                AudioUrl = vocabulary.AudioUrl,
+                ExampleSentence = vocabulary.ExampleSentence,
+                ExamplePinyin = vocabulary.ExamplePinyin,
+                ExampleMeaning = vocabulary.ExampleMeaning,
+                LessonId = vocabulary.LessonId
+            };
         }
 
         [HttpGet]
@@ -40,7 +60,7 @@ namespace backend.Controllers
                 pageSize,
                 totalItems,
                 totalPages = (int)Math.Ceiling((double)totalItems / pageSize),
-                data = vocabularies
+                data = vocabularies.Select(ToResponseDto)
             });
         }
         [HttpGet("{id}")]
@@ -56,7 +76,7 @@ namespace backend.Controllers
                     message = $"Không tìm thấy từ vựng với ID {id}."
                 });
             }
-            return Ok(vocabulary);
+            return Ok(ToResponseDto(vocabulary));
         }
         [HttpGet("level/{levelId}")]
         public async Task<IActionResult> GetVocabulariesByLevelId(int levelId)
@@ -75,7 +95,7 @@ namespace backend.Controllers
                 .OrderBy(v => v.Lesson.OrderIndex)
                 .ThenBy(v => v.Id)
                 .ToListAsync();
-            return Ok(vocabularies);
+            return Ok(vocabularies.Select(ToResponseDto));
         }
         [HttpGet("lesson/{lessonId}")]
         public async Task<IActionResult> GetVocabulariesBylessonId(int lessonId)
@@ -93,7 +113,7 @@ namespace backend.Controllers
                 .Where(v => v.LessonId == lessonId)
                 .OrderBy(v => v.Id)
                 .ToListAsync();
-            return Ok(vocabularies);
+            return Ok(vocabularies.Select(ToResponseDto));
         }
 
         [Authorize(Roles = "Admin")]
@@ -102,7 +122,10 @@ namespace backend.Controllers
         {
             _context.Vocabularies.Add(vocabulary);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetAllVocabularies), new { id = vocabulary.Id }, vocabulary);
+            return CreatedAtAction(
+                nameof(GetVocabularyById),
+                new { id = vocabulary.Id },
+                ToResponseDto(vocabulary));
         }
         [HttpGet("search")]
         public async Task<IActionResult> SearchVocabularies([FromQuery] string keyword)
@@ -125,7 +148,7 @@ namespace backend.Controllers
                     .OrderBy(v => v.Id)
                     .Take(50)
                     .ToListAsync();
-            return Ok(vocabularies);
+            return Ok(vocabularies.Select(ToResponseDto));
 
 
         }
@@ -155,7 +178,12 @@ namespace backend.Controllers
             existingVocabulary.WordSimplified = updatedVocabulary.WordSimplified;
             existingVocabulary.WordTraditional = updatedVocabulary.WordTraditional;
             existingVocabulary.Pinyin = updatedVocabulary.Pinyin;
+            existingVocabulary.PartOfSpeech = updatedVocabulary.PartOfSpeech;
             existingVocabulary.Meaning = updatedVocabulary.Meaning;
+            existingVocabulary.AudioUrl = updatedVocabulary.AudioUrl;
+            existingVocabulary.ExampleSentence = updatedVocabulary.ExampleSentence;
+            existingVocabulary.ExamplePinyin = updatedVocabulary.ExamplePinyin;
+            existingVocabulary.ExampleMeaning = updatedVocabulary.ExampleMeaning;
             existingVocabulary.LessonId = updatedVocabulary.LessonId;
 
             await _context.SaveChangesAsync();

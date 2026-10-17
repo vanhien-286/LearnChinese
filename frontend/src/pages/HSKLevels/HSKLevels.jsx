@@ -37,7 +37,7 @@ if (error) {
   return <div>Lỗi: {error}</div>;
 }
 return (
-  <div className="page-content">
+  <div className="hsk-levels-page">
     <h1>
       cấp độ HSK
     </h1>

@@ -15,5 +15,6 @@ namespace backend.Entities
         public ICollection<UserLesson> UserLessons { get; set; } = new List<UserLesson>();
         public ICollection<UserFlashcard> UserFlashcards { get; set; } = new List<UserFlashcard>();
         public ICollection<UserExamResult> UserExamResults { get; set; } = new List<UserExamResult>();
+
     }
 }

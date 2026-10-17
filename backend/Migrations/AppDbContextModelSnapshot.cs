@@ -44,7 +44,7 @@ namespace backend.Migrations
 
                     b.HasIndex("HSKLevelId");
 
-                    b.ToTable("Exams");
+                    b.ToTable("Exams", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.Grammar", b =>
@@ -80,7 +80,7 @@ namespace backend.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("Grammars");
+                    b.ToTable("Grammars", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.HSKLevel", b =>
@@ -97,7 +97,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HSKLevels");
+                    b.ToTable("HSKLevels", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.Hanzi", b =>
@@ -123,7 +123,7 @@ namespace backend.Migrations
                     b.HasIndex("Character")
                         .IsUnique();
 
-                    b.ToTable("Hanzis");
+                    b.ToTable("Hanzis", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.HanziPronunciation", b =>
@@ -149,7 +149,7 @@ namespace backend.Migrations
                     b.HasIndex("HanziId", "Pinyin")
                         .IsUnique();
 
-                    b.ToTable("HanziPronunciation");
+                    b.ToTable("HanziPronunciation", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.HanziStroke", b =>
@@ -179,7 +179,7 @@ namespace backend.Migrations
                     b.HasIndex("HanziId", "StrokeNumber")
                         .IsUnique();
 
-                    b.ToTable("HanziStroke");
+                    b.ToTable("HanziStroke", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.Lesson", b =>
@@ -207,7 +207,7 @@ namespace backend.Migrations
 
                     b.HasIndex("HSKLevelId");
 
-                    b.ToTable("Lessons");
+                    b.ToTable("Lessons", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.Question", b =>
@@ -236,7 +236,7 @@ namespace backend.Migrations
 
                     b.HasIndex("ExamId");
 
-                    b.ToTable("Questions");
+                    b.ToTable("Questions", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.QuestionOption", b =>
@@ -261,7 +261,7 @@ namespace backend.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("QuestionOptions");
+                    b.ToTable("QuestionOptions", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.Reading", b =>
@@ -294,7 +294,7 @@ namespace backend.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("Readings");
+                    b.ToTable("Readings", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.Role", b =>
@@ -311,7 +311,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.User", b =>
@@ -347,7 +347,7 @@ namespace backend.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.UserExamResult", b =>
@@ -382,7 +382,7 @@ namespace backend.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserExamResults");
+                    b.ToTable("UserExamResults", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.UserFlashcard", b =>
@@ -417,7 +417,7 @@ namespace backend.Migrations
 
                     b.HasIndex("VocabularyId");
 
-                    b.ToTable("UserFlashcards");
+                    b.ToTable("UserFlashcards", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.UserLesson", b =>
@@ -438,7 +438,7 @@ namespace backend.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("UserLessons");
+                    b.ToTable("UserLessons", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.Vocabulary", b =>
@@ -486,7 +486,7 @@ namespace backend.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("Vocabularies");
+                    b.ToTable("Vocabularies", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.VocabularyHanzi", b =>
@@ -513,7 +513,7 @@ namespace backend.Migrations
                     b.HasIndex("VocabularyId", "Position")
                         .IsUnique();
 
-                    b.ToTable("VocabularyHanzis");
+                    b.ToTable("VocabularyHanzis", (string)null);
                 });
 
             modelBuilder.Entity("backend.Entities.Exam", b =>
