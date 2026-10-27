@@ -9,14 +9,9 @@ import Login from "./pages/Login/LoginTemp";
 import Register from "./pages/Register/Register";
 import Vocabulary from "./pages/Vocabulary/Vocabulary";
 import VocabularyDetail from "./pages/VocabularyDetail/VocabularyDetail";
-import Chat from "./pages/Chat/Chat";
-import Videos from "./pages/Videos/Videos";
-import Listening from "./pages/Listening/Listening";
-import Progress from "./pages/Progress/Progress";
-import Settings from "./pages/Settings/Settings";
+
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import VocabularyLearning from "./pages/VocabularyLearning/VocabularyLearning";
-import FlashcardReview from "./pages/Flashcard/FlashcardReview";
+
 function App() {
   return (
     <BrowserRouter>
@@ -32,18 +27,10 @@ function App() {
           <Route path="/hsk/:levelId/lessons" element={<Lessons />} />
           <Route path="/hsk/:levelId/lessons/:lessonId" element={<Lesson />} />
 
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/videos" element={<Videos />} />
-          <Route path="/listening" element={<Listening />} />
-          <Route path="/progress" element={<Progress />} />
-          <Route path="/settings" element={<Settings />} />
+
           <Route path="/vocabulary" element={<Vocabulary />} />
           <Route path="/vocabulary/:id" element={<VocabularyDetail />} />
-          <Route
-              path="/hsk/:levelId/lessons/:lessonId/vocabulary"
-              element={<VocabularyLearning />}
-          />
-          <Route path="/flashcards/review" element={<FlashcardReview />} />
+    
         </Route>  
         </Route>
       </Routes>

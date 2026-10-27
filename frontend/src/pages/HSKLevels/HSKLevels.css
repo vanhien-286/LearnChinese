@@ -1,65 +1,391 @@
-/* HSKLevels.css */
 .hsk-levels-page {
-  max-width: 900px;
+  width: 100%;
+  max-width: 1420px;
   margin: 0 auto;
-  padding: 24px 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  color: #333;
+  color: #073f3d;
 }
 
-.hsk-levels-page h1 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 24px;
-  color: #0f172a;
-  text-transform: capitalize;
+.hsk-page-heading {
+  margin-bottom: 28px;
 }
 
-/* Lưới hiển thị các cấp độ HSK */
-.hsk-levels-page > div:last-child {
+.hsk-eyebrow {
+  display: inline-block;
+  color: #22bdae;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.hsk-page-heading h1 {
+  margin: 6px 0 4px;
+  color: #064b48;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.hsk-page-heading p,
+.hsk-level-panel-heading p,
+.hsk-lessons-heading p {
+  margin: 0;
+  color: #768781;
+}
+
+.hsk-learning-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
+  grid-template-columns: minmax(280px, 350px) minmax(0, 1fr);
+  align-items: start;
+  gap: 22px;
 }
 
-/* Thẻ card cho từng cấp độ */
-.hsk-levels-page > div:last-child > div {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.2s, box-shadow 0.2s;
+.hsk-level-panel,
+.hsk-lessons-panel {
+  overflow: hidden;
+  border: 1px solid #e1e9e5;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 12px 36px rgba(10, 69, 63, 0.06);
 }
 
-.hsk-levels-page > div:last-child > div:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+.hsk-level-panel-heading {
+  padding: 26px 26px 22px;
+  background: #064b48;
+  color: #fff;
 }
 
-.hsk-levels-page h2 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #0f172a;
-  margin: 0 0 16px 0;
+.hsk-level-panel-heading h2 {
+  margin: 7px 0 4px;
+  font-size: 25px;
+  letter-spacing: -0.04em;
 }
 
-.hsk-levels-page button {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
-  font-weight: 500;
+.hsk-level-panel-heading p {
+  color: #b6d5d1;
   font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  align-self: flex-start;
 }
 
-.hsk-levels-page button:hover {
-  background-color: #1d4ed8;
+.hsk-level-list {
+  display: grid;
+  gap: 10px;
+  max-height: 620px;
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.hsk-level-option {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  gap: 13px;
+  padding: 13px;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  background: #f8faf9;
+  color: #164743;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.hsk-level-option:hover {
+  transform: translateY(-1px);
+  border-color: #a3e5dc;
+  background: #effaf8;
+}
+
+.hsk-level-option.is-selected {
+  border-color: #25c4b5;
+  background: #e6f7f4;
+}
+
+.hsk-level-number {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  place-items: center;
+  border-radius: 13px;
+  background: #26bfb1;
+  color: #064b48;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.hsk-level-option-copy {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: 3px;
+}
+
+.hsk-level-option-copy strong {
+  overflow: hidden;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hsk-level-option-copy > span {
+  color: #82908b;
+  font-size: 12px;
+}
+
+.hsk-level-arrow {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  place-items: center;
+  border-radius: 10px;
+  background: #064b48;
+  color: #fff;
+  font-weight: 700;
+}
+
+.hsk-lessons-panel {
+  min-height: 450px;
+  padding: 28px;
+}
+
+.hsk-lessons-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+  padding: 22px 24px;
+  border: 1px solid #a5e8df;
+  border-radius: 18px;
+  background: linear-gradient(120deg, #f0fbf9, #fbfaf6);
+}
+
+.hsk-lessons-heading h2 {
+  margin: 4px 0;
+  color: #064b48;
+  font-size: clamp(21px, 2.8vw, 30px);
+  letter-spacing: -0.04em;
+}
+
+.hsk-lessons-badge {
+  display: grid;
+  width: 80px;
+  height: 72px;
+  flex: 0 0 80px;
+  place-items: center;
+  border-radius: 16px;
+  background: #25bfb2;
+  color: #064b48;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.hsk-lesson-list {
+  display: grid;
+  gap: 13px;
+}
+
+.hsk-lesson-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 19px;
+  border: 1px solid #e2eae7;
+  border-radius: 17px;
+  background: #fff;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.hsk-lesson-card:hover {
+  transform: translateY(-2px);
+  border-color: #a7ded7;
+  box-shadow: 0 10px 24px rgba(10, 69, 63, 0.07);
+}
+
+.hsk-lesson-number {
+  display: grid;
+  width: 62px;
+  height: 62px;
+  flex: 0 0 62px;
+  place-items: center;
+  border: 2px solid #85aaa5;
+  border-radius: 50%;
+  background: #f7fcfb;
+  color: #36736d;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.hsk-lesson-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.hsk-lesson-kicker {
+  color: #e45e59;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.hsk-lesson-copy h3 {
+  margin: 2px 0 3px;
+  color: #064b48;
+  font-size: 19px;
+}
+
+.hsk-lesson-copy p {
+  margin: 0;
+  color: #768781;
+  font-size: 13px;
+}
+
+.hsk-lesson-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 15px;
+  border: 0;
+  border-radius: 11px;
+  background: #064b48;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 160ms ease;
+}
+
+.hsk-lesson-link:hover {
+  background: #08716a;
+}
+
+.hsk-lesson-link.is-locked,
+.hsk-lesson-link.is-locked:hover {
+  background: #aab9b5;
+  cursor: not-allowed;
+}
+
+.hsk-lesson-status {
+  display: inline-block;
+  margin-top: 6px;
+  color: #a43a32;
+  font-size: 12px;
+}
+
+.hsk-lesson-status.is-completed {
+  color: #19804a;
+  font-weight: 700;
+}
+
+.hsk-content-message,
+.hsk-page-message {
+  padding: 28px;
+  border: 1px dashed #cbdcd7;
+  border-radius: 15px;
+  color: #71827d;
+  text-align: center;
+}
+
+.hsk-page-message {
+  max-width: 700px;
+  margin: 50px auto;
+  background: #fff;
+}
+
+.hsk-page-error {
+  border-color: #f0bbb7;
+  color: #a43a32;
+}
+
+@media (max-width: 900px) {
+  .hsk-learning-layout {
+    grid-template-columns: minmax(230px, 0.8fr) minmax(0, 1.4fr);
+    gap: 16px;
+  }
+
+  .hsk-lessons-panel {
+    padding: 20px;
+  }
+
+  .hsk-lesson-card {
+    flex-wrap: wrap;
+  }
+
+  .hsk-lesson-link {
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 680px) {
+  .hsk-page-heading {
+    margin-bottom: 20px;
+  }
+
+  .hsk-learning-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hsk-level-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: 340px;
+  }
+
+  .hsk-level-option {
+    gap: 9px;
+    padding: 10px;
+  }
+
+  .hsk-level-number {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+    font-size: 15px;
+  }
+
+  .hsk-level-arrow {
+    display: none;
+  }
+
+  .hsk-lessons-panel {
+    min-height: 300px;
+    padding: 15px;
+  }
+
+  .hsk-lessons-heading {
+    padding: 16px;
+  }
+
+  .hsk-lessons-badge {
+    width: 62px;
+    height: 58px;
+    flex-basis: 62px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hsk-level-list {
+    grid-template-columns: 1fr;
+  }
+
+  .hsk-lesson-card {
+    gap: 12px;
+  }
+
+  .hsk-lesson-number {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+    font-size: 16px;
+  }
+
+  .hsk-lesson-copy h3 {
+    font-size: 16px;
+  }
+
+  .hsk-lesson-link {
+    margin-left: 62px;
+  }
 }

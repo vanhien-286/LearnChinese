@@ -1,17 +1,23 @@
 import {useEffect, useState} from 'react'
 import {getLessonsByLevel} from "../../services/LessonService";
+import {getLessonProgress} from "../../services/LessonProgressService";
 import {Link, useParams} from "react-router-dom";
-import "./Lessons.css"
+import "./Lessons.css";
 const Lessons = () => {
   const {levelId} = useParams();
   const [lessons, setLessons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [lessonProgress, setLessonProgress] = useState([]);
   useEffect (()  => {
     const LoadLessons = async () => {
       try {
-        const data = await getLessonsByLevel(levelId);
+        const [data, progress] = await Promise.all([
+          getLessonsByLevel(levelId),
+          getLessonProgress(levelId),
+        ]);
         setLessons(data);
+        setLessonProgress(progress);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -61,7 +67,20 @@ const Lessons = () => {
                 className="list-stack"
                 style={{ marginTop: 14 }}
             >
-                {lessons.map((lesson) => (
+                {lessons.map((lesson, index) => {
+                    const progress = lessonProgress.find(
+                        (item) => item.lessonId === lesson.id,
+                    );
+                    const isCompleted = progress?.isCompleted ?? false;
+                    const isLocked =
+                        index > 0 &&
+                        !lessonProgress.some(
+                            (progress) =>
+                                progress.lessonId === lessons[index - 1].id &&
+                                progress.isCompleted,
+                        );
+
+                    return (
                     <div
                         className="surface-card lesson-row"
                         key={lesson.id}
@@ -78,21 +97,34 @@ const Lessons = () => {
                                 </h3>
 
                                 <p>
-                                    Bài học HSK {levelId}
+                                    {isLocked
+                                        ? "Đạt ít nhất 80% bài trước để mở bài này"
+                                        : isCompleted
+                                            ? "Đã hoàn thành"
+                                            : progress
+                                                ? "Chưa đạt 80% · hãy thử lại"
+                                            : `Bài học HSK ${levelId}`}
                                 </p>
                             </div>
 
                         </div>
 
-                        <Link
-                            className="card-link"
-                            to={`/hsk/${levelId}/lessons/${lesson.id}`}
-                        >
-                            Mở →
-                        </Link>
+                        {isLocked ? (
+                            <button className="card-link" type="button" disabled>
+                                Đang khóa
+                            </button>
+                        ) : (
+                            <Link
+                                className="card-link"
+                                to={`/hsk/${levelId}/lessons/${lesson.id}`}
+                            >
+                                Mở →
+                            </Link>
+                        )}
 
                     </div>
-                ))}
+                    );
+                })}
             </div>
 
         </div>
