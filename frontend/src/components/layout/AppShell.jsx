@@ -40,224 +40,71 @@ const AppShell = () => {
 
   return (
     <div className="app-shell">
-
-      {/* SIDEBAR */}
-      <aside className="sidebar">
-
-        {/* LOGO */}
+      <header className="app-header">
         <div className="brand">
           <NavLink to="/dashboard" className="brand-title">
             汉语学习
           </NavLink>
-
-          <small>
-            Học tiếng Trung từng bước
-          </small>
+          <small>Học tiếng Trung từng bước</small>
         </div>
 
-
-        {/* NAVIGATION */}
         <nav className="nav-list">
-
-          {/* HỌC TẬP */}
-          <div className="nav-section-title">
-            HỌC TẬP
-          </div>
-
-          <NavLink
-            className="nav-link"
-            to="/dashboard"
-          >
+          <NavLink className="nav-link" to="/dashboard">
             <span>⌂</span>
             Trang chủ
           </NavLink>
-
-
-          <NavLink
-            className="nav-link"
-            to="/hsk"
-          >
+          <NavLink className="nav-link" to="/hsk">
             <span>📚</span>
-            HSK
+            Lộ trình
           </NavLink>
-
-
-          <NavLink
-            className="nav-link"
-            to="/chat"
-          >
-            <span>💬</span>
-            Trò chuyện
-          </NavLink>
-
-
-          <NavLink
-            className="nav-link"
-            to="/videos"
-          >
-            <span>🎬</span>
-            Video
-          </NavLink>
-
-
-          <NavLink
-            className="nav-link"
-            to="/listening"
-          >
-            <span>🎧</span>
-            Nghe
-          </NavLink>
-
-
-          {/* KHÁC */}
-          <div className="nav-section-title">
-            KHÁC
-          </div>
-
-
-          <NavLink
-            className="nav-link"
-            to="/progress"
-          >
-            <span>📊</span>
-            Tiến độ
-          </NavLink>
-
-
-          <NavLink
-            className="nav-link"
-            to="/settings"
-          >
-            <span>⚙</span>
-            Cài đặt
-          </NavLink>
-
         </nav>
 
+        <div className="profile-wrapper">
+          <button
+            className="profile-chip"
+            onClick={() => setShowProfileMenu(!showProfileMenu)}
+          >
+            <span className="profile-avatar">
+              {user?.username?.charAt(0)?.toUpperCase() || "U"}
+            </span>
+            <span>{user?.username || "Người dùng"}</span>
+            <span className="profile-arrow">
+              {showProfileMenu ? "▲" : "▼"}
+            </span>
+          </button>
 
-        {/* USER AREA */}
-        <div className="sidebar-user">
-
-          <div className="sidebar-avatar">
-            {user?.username?.charAt(0)?.toUpperCase() || "U"}
-          </div>
-
-          <div className="sidebar-user-info">
-
-            <strong>
-              {user?.username || "Người dùng"}
-            </strong>
-
-            <small>
-              {user?.role || "User"}
-            </small>
-
-          </div>
-
-        </div>
-
-      </aside>
-      <div className="main-area">
-
-
-        {/* TOPBAR */}
-        <header className="topbar">
-
-          <div className="topbar-title">
-            Không gian học của bạn
-          </div>
-
-
-          {/* PROFILE */}
-          <div className="profile-wrapper">
-
-            <button
-              className="profile-chip"
-              onClick={() =>
-                setShowProfileMenu(!showProfileMenu)
-              }
-            >
-
-              <span className="profile-avatar">
-                {user?.username?.charAt(0)?.toUpperCase() || "U"}
-              </span>
-
-              <span>
-                {user?.username || "Người dùng"}
-              </span>
-
-              <span className="profile-arrow">
-                {showProfileMenu ? "▲" : "▼"}
-              </span>
-
-            </button>
-
-
-            {/* PROFILE MENU */}
-            {showProfileMenu && (
-
-              <div className="profile-menu">
-
-                <div className="profile-menu-header">
-
-                  <strong>
-                    {user?.username}
-                  </strong>
-
-                  <small>
-                    {user?.email}
-                  </small>
-
-                </div>
-
-
-                <div className="profile-menu-divider" />
-
-
-                <button
-                  onClick={() => {
-                    setShowProfileMenu(false);
-                  }}
-                >
-                  Hồ sơ
-                </button>
-
-
-                <button
-                  onClick={() => {
-                    setShowProfileMenu(false);
-                  }}
-                >
-                  Cài đặt
-                </button>
-
-
-                <div className="profile-menu-divider" />
-
-
-                <button
-                  className="logout-button"
-                  onClick={handleLogout}
-                >
-                  Đăng xuất
-                </button>
-
+          {showProfileMenu && (
+            <div className="profile-menu">
+              <div className="profile-menu-header">
+                <strong>{user?.username}</strong>
+                <small>{user?.email}</small>
               </div>
 
-            )}
+              <div className="profile-menu-divider" />
 
-          </div>
+              <button onClick={() => setShowProfileMenu(false)}>
+                Hồ sơ
+              </button>
 
-        </header>
+              <button onClick={() => setShowProfileMenu(false)}>
+                Cài đặt
+              </button>
 
+              <div className="profile-menu-divider" />
 
-        {/* PAGE CONTENT */}
+              <button className="logout-button" onClick={handleLogout}>
+                Đăng xuất
+              </button>
+            </div>
+          )}
+        </div>
+      </header>
+
+      <div className="main-area">
         <main className="page-container">
           <Outlet />
         </main>
-
       </div>
-
     </div>
   );
 };

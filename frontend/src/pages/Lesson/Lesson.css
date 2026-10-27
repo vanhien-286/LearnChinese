@@ -82,3 +82,248 @@
     color: #2563eb ;
     font-weight: bolder;
 }
+
+.lesson-page {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #073f3d;
+}
+
+.lesson-back-button,
+.lesson-study-actions button,
+.lesson-quiz-actions button,
+.lesson-result button {
+    padding: 11px 16px;
+    border: 0;
+    border-radius: 10px;
+    background: #064b48;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.lesson-back-button {
+    margin-bottom: 20px;
+}
+
+.lesson-page-heading {
+    margin-bottom: 24px;
+}
+
+.lesson-page-heading > span,
+.lesson-card-label {
+    color: #198f83;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.lesson-page-heading h1 {
+    margin: 5px 0;
+    color: #064b48;
+}
+
+.lesson-page-heading p,
+.lesson-help-text {
+    color: #71827d;
+}
+
+.lesson-study,
+.lesson-quiz,
+.lesson-result,
+.lesson-message-card {
+    padding: 28px;
+    border: 1px solid #e1e9e5;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 12px 36px rgba(10, 69, 63, 0.06);
+}
+
+.lesson-flashcard {
+    display: flex;
+    width: 100%;
+    min-height: 300px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 28px;
+    border: 2px solid #b8d3cf;
+    border-radius: 18px;
+    background: #f4f9f8;
+    color: #064b48;
+    cursor: pointer;
+    text-align: center;
+}
+
+.lesson-flashcard.is-flipped {
+    border-color: #064b48;
+    background: #fff;
+}
+
+.lesson-flashcard strong {
+    font-size: clamp(32px, 7vw, 56px);
+}
+
+.lesson-flashcard > span:last-child {
+    color: #71827d;
+    font-size: 18px;
+}
+
+.lesson-study-actions,
+.lesson-quiz-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.lesson-study-actions button:disabled,
+.lesson-quiz-actions button:disabled,
+.lesson-answer-options button:disabled,
+.lesson-text-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.lesson-help-text {
+    text-align: center;
+}
+
+.lesson-text-button {
+    display: block;
+    margin: 16px auto 0;
+    padding: 8px;
+    border: 0;
+    background: transparent;
+    color: #064b48;
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.lesson-quiz-prompt {
+    margin: 0 0 20px;
+    color: #064b48;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.lesson-question-part {
+    margin: 18px 0;
+    padding: 16px;
+    border: 1px solid #e1e9e5;
+    border-radius: 12px;
+    background: #fbfdfc;
+}
+
+.lesson-question-part h3 {
+    margin: 0 0 12px;
+    color: #164743;
+    font-size: 16px;
+}
+
+.lesson-question-part > p {
+    margin: 0 0 10px;
+    color: #71827d;
+}
+
+.lesson-question-part > p:last-child {
+    margin: 10px 0 0;
+}
+
+.lesson-answer-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.lesson-answer-options button {
+    min-height: 58px;
+    padding: 12px;
+    border: 1px solid #d6e5e2;
+    border-radius: 10px;
+    background: #fff;
+    color: #164743;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.lesson-answer-options button.is-selected {
+    border: 2px solid #064b48;
+    background: #e6f7f4;
+}
+
+.lesson-answer-field {
+    display: grid;
+    gap: 8px;
+    color: #164743;
+    font-weight: 700;
+}
+
+.lesson-answer-field input {
+    min-height: 52px;
+    padding: 12px;
+    border: 1px solid #b8d3cf;
+    border-radius: 10px;
+    font: inherit;
+}
+
+.lesson-answer-feedback {
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.lesson-answer-feedback.is-correct {
+    background: #e8f7ed;
+    color: #17653a;
+}
+
+.lesson-answer-feedback.is-incorrect {
+    background: #fff0ee;
+    color: #a43a32;
+}
+
+.lesson-quiz-actions {
+    justify-content: flex-end;
+}
+
+.lesson-result {
+    text-align: center;
+}
+
+.lesson-result-score {
+    display: block;
+    color: #064b48;
+    font-size: 56px;
+    font-weight: 800;
+}
+
+.lesson-page-message,
+.lesson-message-card {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 28px;
+    text-align: center;
+}
+
+.lesson-page-error {
+    color: #a43a32;
+}
+
+@media (max-width: 600px) {
+    .lesson-study,
+    .lesson-quiz,
+    .lesson-result {
+        padding: 18px;
+    }
+
+    .lesson-answer-options {
+        grid-template-columns: 1fr;
+    }
+
+    .lesson-study-actions {
+        flex-direction: column;
+    }
+}
